@@ -8,7 +8,7 @@ const BasePage = () => {
     const auth = useSelector((state) => state.auth);
     useEffect(() => {
      dispatch(getDataAction())
-    }, [])
+    }, [dispatch])
      
 
 

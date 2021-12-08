@@ -1,16 +1,31 @@
-import { useSelector } from "react-redux";
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./components/Home/Home";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import PageNotFound from "./components/PageNotFound/PageNotFound";
+import MovieDetail from "./components/MovieDetail/MovieDetail";
 
-import Auth from './redux/Components/Auth';
-import BasePage from "./redux/Components/BasePage";
+// import './App.scss';
 
 const App = () => {
-  const auth = useSelector((state) => state.auth);
-
   return (
-    <div>
-      <h1>Redux-Toolkit</h1>
+    <div className="app">
+      <BrowserRouter>
+        <Header></Header>
+        <div className="container">
 
-      {auth.isAuth ? <BasePage /> : <Auth />}
+       
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/movie/:imdbID" element={<MovieDetail />} />
+          <Route path="" element={<PageNotFound />} />
+          
+        </Routes>
+        </div>
+        <Footer />
+       
+      </BrowserRouter>
     </div>
   );
 };
